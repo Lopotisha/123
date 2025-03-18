@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Головна сторінка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav {
+            margin: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Банк - Управління Клієнтами та Акаунтами</h1>
+</header>
+
+<nav>
+    <a href="C:/123/add_client.html">Додати Клієнта</a>
+    <a href="C:/123/add_client.html">Додати Акаунт</a>
+    <a href="C:/123/update_client.html">Оновити Клієнта</a>
+</nav>
+
+<h2 style="text-align: center;">Список Клієнтів</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Прізвище</th>
+            <th>Ім'я</th>
+            <th>По батькові</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Тут буде заповнюватися список клієнтів через API -->
+        <!-- Приклад запису: -->
+        <tr>
+            <td>Іванов</td>
+            <td>Іван</td>
+            <td>Іванович</td>
+        </tr>
+        <tr>
+            <td>Петренко</td>
+            <td>Петро</td>
+            <td>Петрович</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 style="text-align: center;">Список Акаунтів</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Номер Акаунта</th>
+            <th>Сума депозиту</th>
+            <th>Термін депозиту</th>
+            <th>Дата депозиту</th>
+            <th>Процентна ставка</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Тут буде заповнюватися список акаунтів через API -->
+        <tr>
+            <td>123456789</td>
+            <td>5000</td>
+            <td>12 місяців</td>
+            <td>2025-03-01</td>
+            <td>5%</td>
+        </tr>
+        <tr>
+            <td>987654321</td>
+            <td>10000</td>
+            <td>24 місяці</td>
+            <td>2025-01-15</td>
+            <td>6%</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

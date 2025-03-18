@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список Клієнтів</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #eef2f3;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .header {
+            background: linear-gradient(90deg, #4CAF50, #2E8B57);
+            color: white;
+            padding: 20px;
+            font-size: 26px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+        .container {
+            width: 85%;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a, button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .update-btn {
+            background-color: #008CBA;
+            color: white;
+        }
+        .update-btn:hover {
+            background-color: #0077A3;
+        }
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        .delete-btn:hover {
+            background-color: #D32F2F;
+        }
+        .add-btn {
+            background-color: #4CAF50;
+            color: white;
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 16px;
+        }
+        .add-btn:hover {
+            background-color: #45A049;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">🏦 Банк - Управління Клієнтами</div>
+    <div class="container">
+        <h1>📋 Список Клієнтів</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Прізвище</th>
+                <th>Ім'я</th>
+                <th>По батькові</th>
+                <th>Дії</th>
+            </tr>
+            {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.surname }}</td>
+                <td>{{ client.name }}</td>
+                <td>{{ client.middle_name }}</td>
+                <td>
+                    <a href="{{ url_for('update_client', client_id=client.id) }}" class="update-btn">🔃 Оновити</a>
+                    <form action="{{ url_for('delete_client', client_id=client.id) }}" method="post" style="display:inline;">
+                        <button type="submit" class="delete-btn" onclick="return confirm('Ви впевнені?')">🗑️ Видалити</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <a href="/add_client" class="add-btn">➕ Додати нового клієнта</a>
+    </div>
+</body>
+</html>

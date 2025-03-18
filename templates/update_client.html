@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оновити Клієнта</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; }
+        .container { width: 50%; margin: 50px auto; background: white; padding: 20px; border-radius: 10px; }
+        input, button { padding: 10px; margin: 10px 0; width: 100%; }
+        button { background-color: #008CBA; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Оновити Клієнта</h2>
+        <form action="{{ url_for('update_client', client_id=client.id) }}" method="post">
+            <label for="surname">Прізвище:</label>
+            <input type="text" id="surname" name="surname" value="{{ client.surname }}" required>
+            
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" name="name" value="{{ client.name }}" required>
+            
+            <label for="middle_name">По батькові:</label>
+            <input type="text" id="middle_name" name="middle_name" value="{{ client.middle_name }}" required>
+            
+            <button type="submit">Зберегти</button>
+        </form>
+    </div>
+</body>
+</html>

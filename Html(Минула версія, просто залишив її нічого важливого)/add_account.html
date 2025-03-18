@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Додати Акаунт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        h2 {
+            color: green;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label, input {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 18px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Додати Акаунт</h2>
+        <form action="submit_account.php" method="post">
+            <label for="deposit_amount">Сума депозиту:</label>
+            <input type="number" step="0.01" id="deposit_amount" name="deposit_amount" required>
+            
+            <label for="deposit_term">Термін депозиту (місяців):</label>
+            <input type="number" id="deposit_term" name="deposit_term" required>
+            
+            <label for="deposit_date">Дата депозиту:</label>
+            <input type="date" id="deposit_date" name="deposit_date" required>
+            
+            <label for="interest_rate">Процентна ставка (%):</label>
+            <input type="number" step="0.01" id="interest_rate" name="interest_rate" required>
+            
+            <label for="account_number">Номер акаунта:</label>
+            <input type="number" id="account_number" name="account_number" required>
+            
+            <label for="client_id">ID клієнта:</label>
+            <input type="number" id="client_id" name="client_id" required>
+            
+            <button type="submit">Додати</button>
+        </form>
+    </div>
+</body>
+</html>
