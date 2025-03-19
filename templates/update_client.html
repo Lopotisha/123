@@ -3,17 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оновити Клієнта</title>
+    <title>🏦 Оновити Клієнта</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; }
-        .container { width: 50%; margin: 50px auto; background: white; padding: 20px; border-radius: 10px; }
-        input, button { padding: 10px; margin: 10px 0; width: 100%; }
-        button { background-color: #008CBA; color: white; border: none; cursor: pointer; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0d1117, #1a1f2e);
+            color: #c9d1d9;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 50px auto;
+            width: 50%;
+            max-width: 600px;
+            background: rgba(13, 17, 23, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px #58a6ff;
+        }
+        h2 {
+            font-size: 32px;
+            color: #58a6ff;
+        }
+        label, input {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+        }
+        input {
+            padding: 12px;
+            border: 2px solid #58a6ff;
+            border-radius: 10px;
+            background: rgba(88, 166, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus {
+            border-color: white;
+            background: rgba(88, 166, 255, 0.2);
+            box-shadow: 0px 0px 10px #58a6ff;
+        }
+        button, .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            font-size: 18px;
+            background: #58a6ff;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0px 0px 10px #58a6ff;
+            cursor: pointer;
+        }
+        button:hover, .back-btn:hover {
+            background: white;
+            color: black;
+            transform: scale(1.1);
+            box-shadow: 0px 0px 20px #58a6ff;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Оновити Клієнта</h2>
+        <h2>🔄 Оновити Клієнта</h2>
         <form action="{{ url_for('update_client', client_id=client.id) }}" method="post">
             <label for="surname">Прізвище:</label>
             <input type="text" id="surname" name="surname" value="{{ client.surname }}" required>
@@ -24,8 +82,10 @@
             <label for="middle_name">По батькові:</label>
             <input type="text" id="middle_name" name="middle_name" value="{{ client.middle_name }}" required>
             
-            <button type="submit">Зберегти</button>
+            <button type="submit">✔ Зберегти</button>
         </form>
+        <br>
+        <a href="{{ url_for('index') }}" class="back-btn">⬅ Повернутися до списку клієнтів</a>
     </div>
 </body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏦 Деталі Акаунту</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0d1117, #1a1f2e);
+            color: #c9d1d9; margin: 0; padding: 0; text-align: center;
+        }
+        .container {
+            margin: 50px auto; width: 50%; max-width: 600px;
+            background: rgba(13, 17, 23, 0.95); padding: 30px;
+            border-radius: 20px; box-shadow: 0px 0px 20px #58a6ff;
+        }
+        h2 { font-size: 32px; margin-bottom: 20px; color: #58a6ff; }
+        table {
+            width: 100%; border-collapse: collapse; margin-top: 10px;
+            background: rgba(88, 166, 255, 0.1); border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 2px solid #58a6ff; padding: 12px;
+            text-align: center; color: white;
+        }
+        th { background-color: #0d1117; color: #58a6ff; }
+        .btn {
+            display: inline-block; margin-top: 20px;
+            padding: 12px 20px; text-decoration: none;
+            border-radius: 8px; font-weight: bold; transition: 0.3s;
+            box-shadow: 0px 0px 10px #58a6ff;
+        }
+        .edit-btn, .back-btn {
+            background: #58a6ff; color: black;
+        }
+        .edit-btn:hover, .back-btn:hover {
+            background: white; color: black; transform: scale(1.1);
+            box-shadow: 0px 0px 20px #58a6ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📄 Деталі Акаунту</h2>
+        <table>
+            <tr><th>ID</th><td>{{ account.account_id }}</td></tr>
+            <tr><th>Номер акаунту</th><td>{{ account.account_number }}</td></tr>
+            <tr><th>Сума депозиту</th><td>{{ account.deposit_amount }}</td></tr>
+            <tr><th>Термін депозиту</th><td>{{ account.deposit_term }} міс.</td></tr>
+            <tr><th>Дата депозиту</th><td>{{ account.deposit_date }}</td></tr>
+            <tr><th>Процентна ставка</th><td>{{ account.interest_rate }}%</td></tr>
+        </table>
+        <br>
+        <a href="{{ url_for('update_account', account_id=account.account_id) }}" class="btn edit-btn">✏️ Редагувати</a>
+        <a href="{{ url_for('client_details', client_id=account.client_id) }}" class="btn back-btn">⬅ Повернутися</a>
+    </div>
+</body>
+</html>

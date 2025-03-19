@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📌 Відомості про клієнта</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0d1117, #1a1f2e);
+            color: #c9d1d9;
+            margin: 0; padding: 0; text-align: center;
+        }
+        .container {
+            width: 90%; max-width: 1000px; margin: 50px auto;
+            background: rgba(13, 17, 23, 0.95); padding: 30px;
+            border-radius: 20px; box-shadow: 0px 0px 20px #58a6ff;
+        }
+        h1, h2 { color: #58a6ff; }
+        .info-container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+        }
+        .client-info, .accounts {
+            padding: 20px; background: rgba(88, 166, 255, 0.1);
+            border-radius: 10px; box-shadow: 0px 0px 10px #58a6ff;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin-top: 15px;
+            background: rgba(13, 17, 23, 0.9); border-radius: 10px;
+            overflow: hidden; color: white;
+        }
+        th, td {
+            border: 1px solid #58a6ff; padding: 12px;
+            text-align: center; font-size: 14px;
+        }
+        th { background-color: #58a6ff; color: black; }
+        tr:nth-child(even) { background-color: rgba(88, 166, 255, 0.2); }
+        .btn {
+            display: inline-block; margin-top: 15px; padding: 10px 16px;
+            background: #58a6ff; color: black; text-decoration: none;
+            border-radius: 8px; font-weight: bold; transition: 0.3s;
+            box-shadow: 0px 0px 10px #58a6ff;
+        }
+        .btn:hover { background: white; transform: scale(1.05); }
+        .btn-danger { background: rgb(195, 3, 3); color: white; }
+        .btn-danger:hover { background: rgb(255, 0, 0); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📌 Відомості про клієнта</h1>
+        <div class="info-container">
+            <div class="client-info">
+                <h2>👤 Особиста інформація</h2>
+                <p><strong>ID:</strong> {{ client.id }}</p>
+                <p><strong>Прізвище:</strong> {{ client.surname }}</p>
+                <p><strong>Ім'я:</strong> {{ client.name }}</p>
+                <p><strong>По батькові:</strong> {{ client.middle_name }}</p>
+            </div>
+            <div class="accounts">
+                <h2>💳 Акаунти клієнта</h2>
+                <table>
+                    <tr><th>ID</th><th>Номер акаунту</th><th>Сума депозиту</th><th>Деталі</th><th>Видалити</th></tr>
+                    {% for account in accounts %}
+                    <tr>
+                        <td>{{ account.account_id }}</td>
+                        <td>{{ account.account_number }}</td>
+                        <td>{{ account.deposit_amount }}</td>
+                        <td><a href="{{ url_for('account_details', account_id=account.account_id) }}" class="btn">ℹ️ Докладніше</a></td>
+                        <td>
+                            <form action="{{ url_for('delete_account', account_id=account.account_id) }}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Ви впевнені, що хочете видалити цей акаунт?')">🗑️ Видалити</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <a href="{{ url_for('add_account', client_id=client.id) }}" class="btn">➕ Додати акаунт</a>
+            </div>
+        </div>
+        <a href="{{ url_for('index') }}" class="btn">⬅ Повернутися до списку клієнтів</a>
+    </div>
+</body>
+</html>

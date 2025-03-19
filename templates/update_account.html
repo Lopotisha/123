@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✏️ Редагування Акаунту</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0d1117, #1a1f2e);
+            color: #c9d1d9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            margin: 50px auto;
+            width: 50%;
+            max-width: 600px;
+            background: rgba(13, 17, 23, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px #58a6ff;
+        }
+        h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #58a6ff;
+        }
+        input, button {
+            padding: 12px;
+            width: 90%;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: none;
+            background: rgba(88, 166, 255, 0.1);
+            color: white;
+            font-size: 16px;
+        }
+        button {
+            background-color: #58a6ff;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px #58a6ff;
+        }
+        button:hover {
+            background-color: white;
+            color: black;
+            transform: scale(1.05);
+            box-shadow: 0px 0px 20px #58a6ff;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 12px 20px;
+            background: #58a6ff;
+            color: black;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 0px 10px #58a6ff;
+        }
+        .back-btn:hover {
+            background: white;
+            color: black;
+            transform: scale(1.1);
+            box-shadow: 0px 0px 20px #58a6ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>✏️ Редагування Акаунту</h2>
+        <form method="POST">
+            <label>Номер акаунту:</label>
+            <input type="text" name="account_number" value="{{ account.account_number }}" required><br>
+            
+            <label>Сума депозиту:</label>
+            <input type="number" name="deposit_amount" value="{{ account.deposit_amount }}" step="0.01" required><br>
+            
+            <label>Термін депозиту (у місяцях):</label>
+            <input type="number" name="deposit_term" value="{{ account.deposit_term }}" required><br>
+            
+            <label>Дата депозиту:</label>
+            <input type="date" name="deposit_date" value="{{ account.deposit_date }}" required><br>
+            
+            <label>Процентна ставка:</label>
+            <input type="number" name="interest_rate" value="{{ account.interest_rate }}" step="0.01" required><br>
+            
+            <button type="submit">💾 Зберегти</button>
+        </form>
+        <br>
+        <a href="{{ url_for('account_details', account_id=account.account_id) }}" class="back-btn">⬅ Повернутися</a>
+    </div>
+</body>
+</html>

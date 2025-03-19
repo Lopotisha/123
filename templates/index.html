@@ -3,101 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список Клієнтів</title>
+    <title>🏦 Банк - Банківська система</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #eef2f3;
+            background: #0d1117;
+            color: #c9d1d9;
+            text-align: center;
             margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        .header {
-            background: linear-gradient(90deg, #4CAF50, #2E8B57);
-            color: white;
             padding: 20px;
-            font-size: 26px;
-            font-weight: bold;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            letter-spacing: 1px;
         }
         .container {
-            width: 85%;
-            margin: 30px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background: #1a1f2e;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px #58a6ff;
         }
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
+        h1, h2 { color: #58a6ff; }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            background: white;
-            overflow: hidden;
+            background: #121820;
             border-radius: 10px;
+            overflow: hidden;
         }
         th, td {
-            border: 1px solid #ddd;
-            padding: 15px;
+            padding: 12px;
+            border: 1px solid #58a6ff;
             text-align: center;
         }
         th {
-            background-color: #4CAF50;
-            color: white;
-            font-size: 16px;
+            background: #58a6ff;
+            color: black;
         }
         tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background: rgba(88, 166, 255, 0.1);
         }
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-        a, button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-        .update-btn {
-            background-color: #008CBA;
-            color: white;
-        }
-        .update-btn:hover {
-            background-color: #0077A3;
-        }
-        .delete-btn {
-            background-color: #f44336;
-            color: white;
-        }
-        .delete-btn:hover {
-            background-color: #D32F2F;
-        }
-        .add-btn {
-            background-color: #4CAF50;
-            color: white;
+        .btn {
             display: inline-block;
-            margin-top: 20px;
-            padding: 12px 20px;
-            font-size: 16px;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 8px;
+            background: #58a6ff;
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0px 0px 10px #58a6ff;
+            border: none;
+            cursor: pointer;
         }
-        .add-btn:hover {
-            background-color: #45A049;
+        .btn:hover {
+            background: white;
+            color: black;
+            transform: scale(1.05);
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="header">🏦 Банк - Управління Клієнтами</div>
     <div class="container">
-        <h1>📋 Список Клієнтів</h1>
+        <h1>🏦 БАНК - БАНКІВСЬКА СИСТЕМА</h1>
+        <h2>📋 Список клієнтів</h2>
         <table>
             <tr>
                 <th>ID</th>
@@ -112,17 +86,18 @@
                 <td>{{ client.surname }}</td>
                 <td>{{ client.name }}</td>
                 <td>{{ client.middle_name }}</td>
-                <td>
-                    <a href="{{ url_for('update_client', client_id=client.id) }}" class="update-btn">🔃 Оновити</a>
+                <td class="btn-container">
+                    <a href="{{ url_for('update_client', client_id=client.id) }}" class="btn">🔃 Оновити</a>
                     <form action="{{ url_for('delete_client', client_id=client.id) }}" method="post" style="display:inline;">
-                        <button type="submit" class="delete-btn" onclick="return confirm('Ви впевнені?')">🗑️ Видалити</button>
+                        <button type="submit" class="btn" onclick="return confirm('Ви впевнені?')">🗑️ Видалити</button>
                     </form>
+                    <a href="{{ url_for('client_details', client_id=client.id) }}" class="btn">Відомості📜</a>
                 </td>
             </tr>
             {% endfor %}
         </table>
         <br>
-        <a href="/add_client" class="add-btn">➕ Додати нового клієнта</a>
+        <a href="{{ url_for('add_client') }}" class="btn">Додати клієнта➕</a>
     </div>
 </body>
 </html>

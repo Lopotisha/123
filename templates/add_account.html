@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏦 Додати Клієнта</title>
+    <title>🏦 Додати Акаунт</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -18,9 +18,6 @@
         h2 { font-size: 32px; margin-bottom: 20px; color: #58a6ff; }
         form {
             display: flex; flex-direction: column; align-items: center;
-        }
-        label {
-            width: 80%; font-size: 16px; margin-top: 10px; text-align: left; color: #58a6ff;
         }
         input {
             width: 80%; padding: 12px; border: 2px solid #58a6ff;
@@ -55,21 +52,17 @@
 </head>
 <body>
     <div class="container">
-        <h2>➕ Додати Клієнта</h2>
-        <form action="/add_client" method="post">
-            <label for="surname">Прізвище:</label>
-            <input type="text" id="surname" name="surname" required>
-            
-            <label for="name">Ім'я:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="middle_name">По батькові:</label>
-            <input type="text" id="middle_name" name="middle_name" required>
-            
-            <button type="submit">✔ Додати</button>
+        <h2>➕ Додати Акаунт</h2>
+        <form method="POST">
+            <input type="text" name="account_number" placeholder="Номер акаунту" required><br>
+            <input type="number" name="deposit_amount" placeholder="Сума депозиту" step="0.01" required><br>
+            <input type="number" name="deposit_term" placeholder="Строк депозиту (у місяцях)" required><br>
+            <input type="date" name="deposit_date" required><br>
+            <input type="number" name="interest_rate" placeholder="Процентна ставка" step="0.01" required><br>
+            <button type="submit">✔ Зберегти</button>
         </form>
         <br>
-        <a href="{{ url_for('index') }}" class="back-btn">⬅ Повернутися до списку клієнтів</a>
+        <a href="{{ url_for('client_details', client_id=client_id) }}" class="back-btn">⬅ Повернутися</a>
     </div>
 </body>
 </html>
