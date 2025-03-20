@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from models import db, Client, Account
 
 app = Flask(__name__)
@@ -27,6 +27,8 @@ def add_client():
 @app.route('/update_client/<int:client_id>', methods=['GET', 'POST'])
 def update_client(client_id):
     client = Client.query.get(client_id)
+    if not client:
+        return redirect(url_for('index'))
     if request.method == 'POST':
         client.surname = request.form['surname']
         client.name = request.form['name']
@@ -81,7 +83,7 @@ def account_details(account_id):
 
 @app.route('/account/<int:account_id>/edit', methods=['GET', 'POST'])
 def update_account(account_id):
-    account = Account.query.get_or_404(account_id)
+    account = Account.query.get_or_404(account_id)  
     if request.method == 'POST':
         account.account_number = request.form['account_number']
         account.deposit_amount = request.form['deposit_amount']

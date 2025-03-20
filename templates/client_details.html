@@ -76,9 +76,27 @@
                     {% endfor %}
                 </table>
                 <a href="{{ url_for('add_account', client_id=client.id) }}" class="btn">➕ Додати акаунт</a>
+                
+                <div class="accounts">
+                    <table>
+                        <tr><th>Загальна сума депозиту</th></tr>
+                        <tr>
+                            <td>{{ accounts|sum(attribute='deposit_amount') }}</td>
+                        </table>
+                        <table>
+                            <tr><th>Загальна сума депозиту з процентами</th></tr>
+                            <tr>
+                                <td>
+                                    {{accounts | sum(attribute='deposit_amount') + accounts | map(attribute='deposit_amount') | sum * (accounts | map(attribute='interest_rate') | sum / 100) }}
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </table>
+                </div>
             </div>
         </div>
-        <a href="{{ url_for('index') }}" class="btn">⬅ Повернутися до списку клієнтів</a>
+        <a href="{{ url_for('index') }}" class="btn">⬅ Повернутися до списку клієнтів</a></td>
     </div>
 </body>
 </html>
